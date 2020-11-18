@@ -1,0 +1,71 @@
+<html>
+
+<head>
+  <title>vacard3</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io.connect();
+    function imgclick() {
+    }
+  </script>
+</head>
+
+<body>
+  <img src="https://clochette-soft.jp/harumina/banner/icon_02b.jpg" id="miori" onclick="imgclick()"
+    style="position:absolute;top:100px;left:100pt;">
+</body>
+<script>
+  var rx = 0;
+  var ry = 0;
+  var miori = document.getElementById("miori");
+
+  miori.ondragstart = function () {
+    return false;
+  };
+
+  miori.onmousedown = function (event) {
+    event.preventDefault();
+    document.addEventListener("mousemove", onMouseMove);
+    rx = event.clientX - parseInt(miori.style.left.slice(0, -2), 10);
+    ry = event.clientY - parseInt(miori.style.top.slice(0, -2), 10);
+    socket.emit('debug_print', {str:'mouse', rx:rx, ry:ry});
+  }
+  var onMouseMove = function (event) {
+    event.preventDefault();
+
+    img_x = event.clientX - rx;
+    img_y = event.clientY - ry;
+    socket.emit('client_img_click', {img_y:img_y, img_x:img_x});
+  }
+  miori.onmouseup = function (event) {
+    document.removeEventListener("mousemove", onMouseMove);
+    socket.emit('debug_print', {str:'mouseend',rx:rx, ry:ry});
+  }
+  
+  miori.ontouchstart = function (event) {
+    event.preventDefault();
+    document.addEventListener("touchmove", onTouchMove);
+    var touchObject = event.changedTouches[0];
+    rx = touchObject.pageX  - parseInt(miori.style.left.slice(0, -2), 10);
+    ry = touchObject.pageY - parseInt(miori.style.top.slice(0, -2), 10);
+    socket.emit('debug_print', {str:'touch',rx:rx, ry:ry,x:touchObject.pageX ,xx:miori.style.left});
+  }
+  var onTouchMove = function (event) {
+    event.preventDefault();
+
+    var touchObject = event.changedTouches[0];
+    img_x = touchObject.pageX - rx;
+    img_y = touchObject.pageY - ry;
+    socket.emit('client_img_click', {img_y:img_y, img_x:img_x});
+  }
+  miori.ontouchend = function (event) {
+    document.removeEventListener("touchmove", onMouseMove);
+    socket.emit('debug_print', {str:'touchend',rx:rx, ry:ry});
+  }
+  socket.on('server_img_click', function (img_coord) {
+    miori.style.top = img_coord.img_y + "px";
+    miori.style.left = img_coord.img_x + "px";
+  });
+</script>
+
+</html>
