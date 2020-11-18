@@ -4,7 +4,7 @@
   "description": "",
   "main": "vacard3_server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node vacard3_server.js"
   },
   "author": "",
   "license": "ISC",
