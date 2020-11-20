@@ -1,6 +1,7 @@
 var fs = require('fs');
 var http = require('http');
 var server = http.createServer();
+var client_current_id = 1;
 
 server.on('request', function(req, res) {
   var stream = fs.createReadStream('vacard3.html');
@@ -12,6 +13,7 @@ server.listen(8000);
 
 io.sockets.on('connection', function(socket) {
     console.log('connect')
+    io.emit('init', {id:client_current_id++});
     socket.on('client_img_click', function(img_coord){
         console.log('client_img_click', img_coord);
         io.emit('server_img_click', img_coord);
