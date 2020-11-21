@@ -14,9 +14,13 @@ server.listen(8000);
 io.sockets.on('connection', function(socket) {
     console.log('connect')
     io.emit('init', {id:client_current_id++});
-    socket.on('client_img_click', function(img_coord){
-        console.log('client_img_click', img_coord);
-        io.emit('server_img_click', img_coord);
+    socket.on('client_img_click_down', function(data){
+        console.log('client_img_click_down', data);
+        io.emit('server_img_click_down', data);
+    });
+    socket.on('client_img_click_move', function(data){
+        console.log('client_img_click_move', data);
+        io.emit('server_img_click_move', data);
     });
     socket.on('debug_print', function(data){
         console.log('debug_print', data);
