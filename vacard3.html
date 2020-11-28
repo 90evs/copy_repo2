@@ -7,12 +7,12 @@
 
     var socket = io.connect();
     var myID = 0;
-    var vaList = ["Aimi","HikaruAkao","ChinatsuAkasaki","HimikaAkaneya","SatomiAkesaka","AyakaAsai","MomoAsakura","MadokaAsahina","KanaAsumi","SoraAmamiya","SatomiArai","ChikaAnzai","YukaIguchi","ShioriIzawa","ShizukaIshigami","YuiIshikawa","KaoriIshihara","KanaIchinose","AyasaItou","KanaeItou","ShizukaItou","MikuItou","KikukoInoue","HonokaInoue","MarinaInoue","AyakaImamura","ManakaIwami","SumireUesaka","KanaUeda","ReinaUeda","AyaUchida","MaayaUchida","YumiUchiyama","RumiOokubo","NaomiOozora","YukaOotsubo","SaoriOonishi","YuukoOono","AyakaOohashi","SayakaOohara","NichikaOomori","HitomiOowada","YuiOgura","AriOzawa","ChiakiOmigawa","AiKakuma","EmiriKatou","HisakoKanemoto","AiKayano","AyakoKawasumi","MakiKawase","EriKitamura","IbukiKido","AkariKitou","HinaKino","JuriKimura","RieKugimiya","TomoriKusunoki","MisakiKuno","MiyuKubota","YurikaKubo","TomoyoKurosawa","YuukiKuwahara","KotoriKoiwai","HiyoriKouno","MarikaKouno","AoiKoga","AmiKoshimizu","MinakoKotobuki","YuuKobayashi","KonomiKohara","MikakoKomatsu","ReinaKondou","ChiwaSaitou","IoriSaeki","MaayaSakamoto","AyaneSakura","SatomiSatou","RinaSatou","MiyukiSawashiro","MiyuriShimabukuro","ShinoShimoji","HarukaShiraishi","RieSuegara","AyaSuzaki","AinaSuzuki","EriSuzuki","MinoriSuzuki","SayumiSuzushiro","AyakaSuwa","AsamiSeto","YuuSerizawa","SayakaSenbongi","AkiraSekine","YouTaichi","AyahiTakagaki","YuukiTakada","MinamiTakahashi","RieTakahashi","NatsumiTakamori","TomoyoTakayanagi","AyanaTaketatsu","AzusaTadokoro","AimiTanaka","MinamiTanaka","AtsumiTanezaki","RisaTaneda","MutsumiTamura","YukariTamura","SakuraTange","HarukaChisuga","MinoriChihara","MinamiTsuda","HarukaTerui","HisakoToujou","NaoTouyama","SoraTokui","HarukaTomatsu","MiyuTomita","AkiToyosaki","MoeToyota","RikaNagae","YukiNagaku","JuriNagatsuma","MariaNaganawa","MaiNakahara","KaoriNazuka","ShiinaNatsukawa","YoshinoNanjou","AsukaNishi","NozomiNishida","ManamiNumakura","MamikoNoto","AiNonaka","HitomiNabatame","KanaHanazawa","YumiriHanamori","SaoriHayami","SayuriHara","SayakaHarada","YokoHikasa","RinaHidaka","MisatoFukuen","YukiyoFujii","AkaneFujita","SakiFujita","MaiFuchigami","YuiHorie","RinaHonnizumi","KaedeHondo","RomiPark","KaoriMaeda","ErikoMatsui","SatsumiMatsuda","RisaeMatsuda","ShioriMikami","SachikaMisawa","NanaMizuki","KaoriMizuhashi","InoriMinase","SakiMinami","SuzukoMimori","SakiMiyashita","YumeMiyamoto","RieMurakawa","SumireMorohoshi","KiyonoYasuno","SayuriYahagi","MegumiYamaguchi","NanamiYamashita","HibikuYamamura","NozomiYamamoto","AoiYuuki","MayuYoshioka","YuuriYoshida","HarukaYoshimura","MadokaYonezawa","YuukiWakai","AzumiWaki","AiFairouz","Sarah EmiBridcutt","Lynn ","MAO "];
+    var vaList = ["Aimi", "HikaruAkao", "ChinatsuAkasaki", "HimikaAkaneya", "SatomiAkesaka", "AyakaAsai", "MomoAsakura", "MadokaAsahina", "KanaAsumi", "SoraAmamiya", "SatomiArai", "ChikaAnzai", "YukaIguchi", "ShioriIzawa", "ShizukaIshigami", "YuiIshikawa", "KaoriIshihara", "KanaIchinose", "AyasaItou", "KanaeItou", "ShizukaItou", "MikuItou", "KikukoInoue", "HonokaInoue", "MarinaInoue", "AyakaImamura", "ManakaIwami", "SumireUesaka", "KanaUeda", "ReinaUeda", "AyaUchida", "MaayaUchida", "YumiUchiyama", "RumiOokubo", "NaomiOozora", "YukaOotsubo", "SaoriOonishi", "YuukoOono", "AyakaOohashi", "SayakaOohara", "NichikaOomori", "HitomiOowada", "YuiOgura", "AriOzawa", "ChiakiOmigawa", "AiKakuma", "EmiriKatou", "HisakoKanemoto", "AiKayano", "AyakoKawasumi", "MakiKawase", "EriKitamura", "IbukiKido", "AkariKitou", "HinaKino", "JuriKimura", "RieKugimiya", "TomoriKusunoki", "MisakiKuno", "MiyuKubota", "YurikaKubo", "TomoyoKurosawa", "YuukiKuwahara", "KotoriKoiwai", "HiyoriKouno", "MarikaKouno", "AoiKoga", "AmiKoshimizu", "MinakoKotobuki", "YuuKobayashi", "KonomiKohara", "MikakoKomatsu", "ReinaKondou", "ChiwaSaitou", "IoriSaeki", "MaayaSakamoto", "AyaneSakura", "SatomiSatou", "RinaSatou", "MiyukiSawashiro", "MiyuriShimabukuro", "ShinoShimoji", "HarukaShiraishi", "RieSuegara", "AyaSuzaki", "AinaSuzuki", "EriSuzuki", "MinoriSuzuki", "SayumiSuzushiro", "AyakaSuwa", "AsamiSeto", "YuuSerizawa", "SayakaSenbongi", "AkiraSekine", "YouTaichi", "AyahiTakagaki", "YuukiTakada", "MinamiTakahashi", "RieTakahashi", "NatsumiTakamori", "TomoyoTakayanagi", "AyanaTaketatsu", "AzusaTadokoro", "AimiTanaka", "MinamiTanaka", "AtsumiTanezaki", "RisaTaneda", "MutsumiTamura", "YukariTamura", "SakuraTange", "HarukaChisuga", "MinoriChihara", "MinamiTsuda", "HarukaTerui", "HisakoToujou", "NaoTouyama", "SoraTokui", "HarukaTomatsu", "MiyuTomita", "AkiToyosaki", "MoeToyota", "RikaNagae", "YukiNagaku", "JuriNagatsuma", "MariaNaganawa", "MaiNakahara", "KaoriNazuka", "ShiinaNatsukawa", "YoshinoNanjou", "AsukaNishi", "NozomiNishida", "ManamiNumakura", "MamikoNoto", "AiNonaka", "HitomiNabatame", "KanaHanazawa", "YumiriHanamori", "SaoriHayami", "SayuriHara", "SayakaHarada", "YokoHikasa", "RinaHidaka", "MisatoFukuen", "YukiyoFujii", "AkaneFujita", "SakiFujita", "MaiFuchigami", "YuiHorie", "RinaHonnizumi", "KaedeHondo", "RomiPark", "KaoriMaeda", "ErikoMatsui", "SatsumiMatsuda", "RisaeMatsuda", "ShioriMikami", "SachikaMisawa", "NanaMizuki", "KaoriMizuhashi", "InoriMinase", "SakiMinami", "SuzukoMimori", "SakiMiyashita", "YumeMiyamoto", "RieMurakawa", "SumireMorohoshi", "KiyonoYasuno", "SayuriYahagi", "MegumiYamaguchi", "NanamiYamashita", "HibikuYamamura", "NozomiYamamoto", "AoiYuuki", "MayuYoshioka", "YuuriYoshida", "HarukaYoshimura", "MadokaYonezawa", "YuukiWakai", "AzumiWaki", "AiFairouz", "Sarah EmiBridcutt", "Lynn ", "MAO "];
+    const deckLeftCoord = "10px";
+    const deckTopCoord = "60px";
     socket.on('init', function (data) {
       if (!myID) {
         myID = data.id;
-        console.log(myID);
-        document.getElementById("area1").innerText = myID;
         document.getElementById("area1").innerText = "Your ID is " + myID;
       }
     });
@@ -21,83 +21,93 @@
 
 <body>
   <div id="area1">Your ID is </div>
-  <!-- <img src="https://clochette-soft.jp/harumina/banner/icon_02b.jpg" id="miori"
-    style="position:absolute;top:100px;left:100pt;"> -->
+  <input type="button" value="Reset" onclick="reset_signal();" ontouchstart="reset_signal()">
   <script>
     for (var i = 0; i < vaList.length; i++) {
-      document.write('<img src="https://cdn.glitch.com/b230e299-09e6-4a41-99ee-e5a53615b982%2F' + vaList[i] + '.jpg" id =' + i + ' style="z-index=' + i + ';position:absolute;top:50px;left:50pt;">');
+      document.write('<img src="https://cdn.glitch.com/b230e299-09e6-4a41-99ee-e5a53615b982%2F' + vaList[i] + '.jpg" id =' + i + ' style="z-index:' + i + ';position:absolute;top:' + deckTopCoord + ';left:' + deckLeftCoord + ';">');
     }
+    document.write('<img src="https://cdn.glitch.com/b230e299-09e6-4a41-99ee-e5a53615b982%2Fblack.jpg" id ="black" style="z-index:' + vaList.length + ';position:absolute;top:' + deckTopCoord + ';left:' + deckLeftCoord + ';">');
   </script>
+
 </body>
 <script>
   var rx = 0;
   var ry = 0;
   var move_target = -1;
-  var max_zindex = vaList.length - 1;
+  var max_zindex = vaList.length;
   var vaId = new Array(vaList.length);
+
+  function sendClickMove(click_x, click_y) {
+    img_x = click_x - rx;
+    img_y = click_y - ry;
+    vaId[move_target].style.left = img_x + "px";
+    vaId[move_target].style.top = img_y + "px";
+    socket.emit('client_img_click_move', { id: myID, va_id: move_target, img_x: img_x, img_y: img_y });
+  }
+  function sendClickDown(event, click_x, click_y) {
+    event.target.style.zIndex = ++max_zindex;
+    rx = click_x;
+    ry = click_y;
+    move_target = parseInt(event.target.id, 10);
+    socket.emit('debug_print', { id: myID, str: 'mouse', rx: rx, ry: ry });
+    socket.emit('client_img_click_down', { id: myID, va_id: move_target, zindex: max_zindex });
+  }
+  function drawCard(event, click_x, click_y) {
+    vaId[move_target].style.zIndex = ++max_zindex;
+    rx = click_x;
+    ry = click_y;
+    socket.emit('debug_print', { id: myID, str: 'mouse', rx: rx, ry: ry });
+    socket.emit('client_img_click_down', { id: myID, va_id: move_target, zindex: max_zindex });
+  }
+  function reset(){
+    for (var i = 0; i < vaList.length; i++) {
+      vaId[i].style.zIndex = i;
+      vaId[i].style.left = deckLeftCoord;
+      vaId[i].style.top = deckTopCoord;
+    }
+
+  }
+  function reset_signal() {
+    socket.emit('client_reset', { id: myID})
+  }
+
   for (var i = 0; i < vaList.length; i++) {
     vaId[i] = document.getElementById(i);
-    console.log(vaId);
     vaId[i].ondragstart = function () {
       return false;
     };
 
     vaId[i].onmousedown = function (event) {
       document.addEventListener("mousemove", onMouseMove);
-      event.target.style.zIndex = ++max_zindex;
-      rx = event.clientX - parseInt(event.target.style.left.slice(0, -2), 10);
-      ry = event.clientY - parseInt(event.target.style.top.slice(0, -2), 10);
-      move_target = parseInt(event.target.id, 10);
-      socket.emit('debug_print', { id: myID, str: 'mouse', rx: rx, ry: ry });
-      socket.emit('client_img_click_down', { id: myID, va_id: move_target, zindex: max_zindex });
+      sendClickDown(event, event.offsetX, event.offsetY);
     }
-    var onMouseMove = function (event) {
-
-      img_x = event.clientX - rx;
-      img_y = event.clientY - ry;
-      vaId[move_target].style.top = img_y + "px";
-      vaId[move_target].style.left = img_x + "px";
-      socket.emit('client_img_click_move', { id: myID, va_id: move_target, img_y: img_y, img_x: img_x });
-    }
-
     vaId[i].ontouchstart = function (event) {
       event.preventDefault();
       document.addEventListener("touchmove", onTouchMove);
-      event.target.style.zIndex = ++max_zindex;
       var touchObject = event.changedTouches[0];
-      rx = touchObject.pageX - parseInt(event.target.style.left.slice(0, -2), 10);
-      ry = touchObject.pageY - parseInt(event.target.style.top.slice(0, -2), 10);
-      move_target = parseInt(event.target.id, 10);
-      socket.emit('debug_print', { id: myID, str: 'touch', rx: rx, ry: ry });
-      socket.emit('client_img_click_down', { id: myID, va_id: move_target, zindex: max_zindex });
+      sendClickDown(event, touchObject.pageX - parseInt(event.target.style.left.slice(0, -2), 10)
+        , touchObject.pageY - parseInt(event.target.style.top.slice(0, -2), 10));
     }
-    var onTouchMove = function (event) {
-      event.preventDefault();
-
-      var touchObject = event.changedTouches[0];
-      img_x = touchObject.pageX - rx;
-      img_y = touchObject.pageY - ry;
-      vaId[move_target].style.top = img_y + "px";
-      vaId[move_target].style.left = img_x + "px";
-      socket.emit('client_img_click_move', { id: myID, va_id: move_target, img_y: img_y, img_x: img_x });
-    }
-    socket.on('server_img_click_down', function (data) {
-      console.log(data);
-      if (data.id != myID) {
-        max_zindex = data.zindex;
-        vaId[data.va_id].style.zIndex = max_zindex;
-      }
-
-    });
-    socket.on('server_img_click_move', function (data) {
-      console.log(data);
-      if (data.id != myID) {
-        console.log(data.va_id);
-        vaId[data.va_id].style.top = data.img_y + "px";
-        vaId[data.va_id].style.left = data.img_x + "px";
-      }
-    });
   }
+
+  var deck = document.getElementById("black");
+  deck.onmousedown = function (event) {
+    socket.emit('client_draw_card', { id: myID });
+  }
+  deck.ontouchstart = function (event) {
+      event.preventDefault();
+    socket.emit('client_draw_card', { id: myID });
+  }
+
+  var onMouseMove = function (event) {
+    sendClickMove(event.clientX, event.clientY);
+  }
+  var onTouchMove = function (event) {
+    event.preventDefault();
+    var touchObject = event.changedTouches[0];
+    sendClickMove(touchObject.pageX, touchObject.pageY);
+  }
+
   window.onmouseup = function (event) {
     document.removeEventListener("mousemove", onMouseMove);
     socket.emit('debug_print', { id: myID, str: 'mouseend', rx: rx, ry: ry });
@@ -107,6 +117,28 @@
     document.removeEventListener("touchmove", onTouchMove);
     socket.emit('debug_print', { id: myID, str: 'touchend', rx: rx, ry: ry });
   }
+
+  socket.on('server_img_click_down', function (data) {
+    if (data.id != myID) {
+      max_zindex = data.zindex;
+      vaId[data.va_id].style.zIndex = max_zindex;
+    }
+  });
+  socket.on('server_img_click_move', function (data) {
+    if (data.id != myID) {
+      console.log(data.va_id);
+      vaId[data.va_id].style.left = data.img_x + "px";
+      vaId[data.va_id].style.top = data.img_y + "px";
+    }
+  });
+  socket.on('server_draw_card', function (data) {
+    console.log(data.va_id);
+    vaId[data.va_id].style.zIndex = ++max_zindex;
+    vaId[data.va_id].style.top = "170px";
+  });
+  socket.on('server_reset', function(data){
+    reset();
+  });
 </script>
 
 </html>
