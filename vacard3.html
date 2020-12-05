@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <title>vacard3</title>
+  <title>vacard3 version:0.1.0</title>
   <script src="/socket.io/socket.io.js"></script>
   <script>
 
@@ -25,6 +25,7 @@
   <script>
     for (var i = 0; i < vaList.length; i++) {
       document.write('<img src="https://cdn.glitch.com/b230e299-09e6-4a41-99ee-e5a53615b982%2F' + vaList[i] + '.jpg" id =' + i + ' style="z-index:' + i + ';position:absolute;top:' + deckTopCoord + ';left:' + deckLeftCoord + ';">');
+      document.write('<div id=text_'+ i + ' style="z-index:' + i + ';position:absolute;top:300px;left:' + deckLeftCoord + ';">' + vaList[i] + '</div>');
     }
     document.write('<img src="https://cdn.glitch.com/b230e299-09e6-4a41-99ee-e5a53615b982%2Fblack.jpg" id ="black" style="z-index:' + vaList.length + ';position:absolute;top:' + deckTopCoord + ';left:' + deckLeftCoord + ';">');
   </script>
@@ -36,12 +37,15 @@
   var move_target = -1;
   var max_zindex = vaList.length;
   var vaId = new Array(vaList.length);
+  var text_vaId = new Array(vaList.length);
 
   function sendClickMove(click_x, click_y) {
     img_x = click_x - rx;
     img_y = click_y - ry;
     vaId[move_target].style.left = img_x + "px";
     vaId[move_target].style.top = img_y + "px";
+    text_vaId[move_target].style.left = img_x + "px";
+    text_vaId[move_target].style.top = (img_y+90) + "px";
     socket.emit('client_img_click_move', { id: myID, va_id: move_target, img_x: img_x, img_y: img_y });
   }
   function sendClickDown(event, click_x, click_y) {
@@ -73,6 +77,7 @@
 
   for (var i = 0; i < vaList.length; i++) {
     vaId[i] = document.getElementById(i);
+    text_vaId[i] = document.getElementById("text_" + i);
     vaId[i].ondragstart = function () {
       return false;
     };
@@ -129,6 +134,8 @@
       console.log(data.va_id);
       vaId[data.va_id].style.left = data.img_x + "px";
       vaId[data.va_id].style.top = data.img_y + "px";
+      text_vaId[data.va_id].style.left = data.img_x + "px";
+      text_vaId[data.va_id].style.top = (data.img_y+90) + "px";
     }
   });
   socket.on('server_draw_card', function (data) {
